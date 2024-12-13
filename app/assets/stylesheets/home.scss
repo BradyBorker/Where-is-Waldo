@@ -1,0 +1,37 @@
+@font-face {
+    font-family: "FuzzyBubbles-Bold";
+    src: url("FuzzyBubbles-Bold.ttf");
+}
+
+.header {
+    margin-top: 5px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.header .text span {
+    font-size: 64px;
+
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+
+    font-family: 'FuzzyBubbles-Bold';
+}
+
+.header .text>span.first {
+    color: #085B98
+}
+
+.header .text>span.second {
+    color: #860906
+}
+
+.maps-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+
+    padding: 10px;
+}

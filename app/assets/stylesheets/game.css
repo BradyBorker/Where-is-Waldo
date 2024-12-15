@@ -1,0 +1,9 @@
+.game-map {
+    position: relative;
+}
+
+.game-map>.game-state {
+    position: absolute;
+    right: 0;
+    bottom: 100%;
+}

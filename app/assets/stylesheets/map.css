@@ -1,9 +1,11 @@
+img.blurred {
+    filter: blur(2px);
+}
+
 a>img {
     object-fit: cover;
     width: 100%;
     height: 100%;
-
-    filter: blur(1px);
 }
 
 .game-map-container {
@@ -18,8 +20,4 @@ a>img {
 
     max-width: 100%;
     height: auto;
-}
-
-.game-map-container>img.blurred {
-    filter: blur(6px);
 }

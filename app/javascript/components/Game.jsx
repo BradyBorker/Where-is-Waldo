@@ -30,13 +30,15 @@ const Game = () => {
         console.log(`x: ${x} y: ${y}`)
     }
 
-    const submitCoordinates = () => { }
+    const submitCoordinates = () => {
+
+    }
 
     return (
         <>
             <Header />
             <div className="game-map-container" onClick={playing ? clickMap : undefined}>
-                {Object.keys(coordinates).length > 0 && <Marker coordinates={[coordinates.x, coordinates.y]} />}
+                {Object.keys(coordinates).length > 0 && <Marker coordinates={coordinates} submitCoordinates={submitCoordinates} />}
                 <div className="start-timer">{playing ?
                     <Timer elapsedTime={elapsedTime} setElapsedTime={setElapsedTime} />
                     : <button onClick={startGame}>Start</button>}

@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Map from "./Map";
 import Header from "./Header";
 import Timer from "./Timer";
+import Marker from "./Marker";
 import { maps } from "./App";
 
 const Game = () => {
     const [playing, setPlaying] = useState(false);
     const [elapsedTime, setElapsedTime] = useState(0);
+    const [coordinates, setCoordinates] = useState({});
 
     const mapTitle = useParams().map;
     const mapObj = maps.find((map) => map.title == mapTitle);
@@ -16,10 +18,23 @@ const Game = () => {
         setPlaying((playState) => !playState);
     }
 
+    const clickMap = (e) => {
+        const rect = e.target.getBoundingClientRect();
+        const x = e.clientX - rect.left
+        const y = e.clientY - rect.top
+        const normX = x / e.target.width;
+        const normY = y / e.target.height;
+        setCoordinates({ x, y, normX, normY })
+        console.log(`x: ${x} y: ${y}`)
+    }
+
+    const submitCoordinates = () => { }
+
     return (
         <>
             <Header />
-            <div className="game-map">
+            <div className="game-map" onClick={playing ? clickMap : undefined}>
+                {Object.keys(coordinates).length > 0 && <Marker coordinates={[coordinates.x, coordinates.y]} />}
                 <div className="game-state">{playing ?
                     <Timer elapsedTime={elapsedTime} setElapsedTime={setElapsedTime} />
                     : <button onClick={startGame}>Start</button>}

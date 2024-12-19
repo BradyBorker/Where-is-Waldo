@@ -9,6 +9,8 @@ a>img {
 .game-map {
     max-width: 1100px;
     margin: 0px auto;
+
+    position: relative;
 }
 
 .game-map>img {
@@ -20,4 +22,16 @@ a>img {
 
 .game-map>img.blurred {
     filter: blur(6px);
+}
+
+.selection-container {
+    position: absolute;
+    z-index: 10;
+}
+
+.marker {
+    width: 10px;
+    height: 10px;
+    border: 1px solid black;
+    border-radius: 50%;
 }

@@ -1,9 +1,37 @@
-.game-map {
-    position: relative;
-}
-
-.game-map>.game-state {
+.game-map-container>.start-timer {
     position: absolute;
     right: 0;
     bottom: 100%;
+}
+
+.selection-container {
+    position: absolute;
+    z-index: 10;
+
+    display: flex;
+}
+
+.marker {
+    width: 10px;
+    height: 10px;
+    border: 2px solid black;
+    border-radius: 50%;
+}
+
+.character-select {
+    border: 3px solid black;
+    padding: 3px;
+    margin-left: 10px;
+    background-color: beige;
+}
+
+.character-select>img {
+    height: 50px;
+    width: 50x;
+}
+
+.character-select:hover {
+    -webkit-box-shadow: 1px 1px 20px 3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 1px 20px 3px rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 1px 20px 3px rgba(0, 0, 0, 0.75);
 }

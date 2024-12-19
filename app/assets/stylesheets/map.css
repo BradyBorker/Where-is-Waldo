@@ -6,32 +6,20 @@ a>img {
     filter: blur(1px);
 }
 
-.game-map {
+.game-map-container {
     max-width: 1100px;
     margin: 0px auto;
 
     position: relative;
 }
 
-.game-map>img {
+.game-map-container>img {
     object-fit: fill;
 
     max-width: 100%;
     height: auto;
 }
 
-.game-map>img.blurred {
+.game-map-container>img.blurred {
     filter: blur(6px);
-}
-
-.selection-container {
-    position: absolute;
-    z-index: 10;
-}
-
-.marker {
-    width: 10px;
-    height: 10px;
-    border: 1px solid black;
-    border-radius: 50%;
 }

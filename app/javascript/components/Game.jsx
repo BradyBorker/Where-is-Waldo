@@ -19,6 +19,8 @@ const Game = () => {
     }
 
     const clickMap = (e) => {
+        if (e.target.className !== "active-map") return;
+
         const rect = e.target.getBoundingClientRect();
         const x = e.clientX - rect.left
         const y = e.clientY - rect.top
@@ -33,9 +35,9 @@ const Game = () => {
     return (
         <>
             <Header />
-            <div className="game-map" onClick={playing ? clickMap : undefined}>
+            <div className="game-map-container" onClick={playing ? clickMap : undefined}>
                 {Object.keys(coordinates).length > 0 && <Marker coordinates={[coordinates.x, coordinates.y]} />}
-                <div className="game-state">{playing ?
+                <div className="start-timer">{playing ?
                     <Timer elapsedTime={elapsedTime} setElapsedTime={setElapsedTime} />
                     : <button onClick={startGame}>Start</button>}
                 </div>

@@ -7,7 +7,9 @@ const Marker = ({ coordinates }) => {
         <>
             <div style={{ left: `${x - 5}px`, top: `${y - 5}px` }} className="selection-container">
                 <div className="marker"></div>
-                <div className="character-select"></div>
+                <div className="character-select">
+                    <img src="/images/waldo.png" alt="Waldo" />
+                </div>
             </div>
         </>
     )

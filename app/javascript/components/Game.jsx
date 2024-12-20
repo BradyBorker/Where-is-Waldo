@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Map from "./Map";
 import Header from "./Header";
@@ -32,6 +32,10 @@ const Game = () => {
 
     const submitCoordinates = () => {
         const normCoordinates = [coordinates.normX, coordinates.normY];
+
+        useEffect(() => {
+            const url = `/api/v1/maps/${mapTitle}/characters/waldo`;
+        }, [])
     }
 
     return (

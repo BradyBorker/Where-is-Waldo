@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+map_coordinates = {
+  beach: [],
+  race: [],
+  fruit: [],
+  space: []
+}
+
+['beach', 'race', 'fruit', 'space'].each do |map|
+  Map.create(title: map)
+end
+
+Map.all.each do |map|
+  map.character.create()
+end

@@ -1,7 +1,7 @@
 .game-map-container>.start-timer {
     position: absolute;
     right: 0;
-    bottom: 100%;
+    bottom: 101%;
 }
 
 .selection-container {
@@ -34,4 +34,24 @@
     -webkit-box-shadow: 1px 1px 20px 3px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 1px 1px 20px 3px rgba(0, 0, 0, 0.75);
     box-shadow: 1px 1px 20px 3px rgba(0, 0, 0, 0.75);
+}
+
+@media (max-width: 600px) {
+    .marker {
+        width: 5px;
+        height: 5px;
+        border: 1px solid black;
+        border-radius: 50%;
+    }
+
+    .character-select {
+        border: 2px solid black;
+        padding: 2px;
+        margin-left: 8px;
+    }
+
+    .character-select>img {
+        height: 35px;
+        width: 35x;
+    }
 }

@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  root 'map#index'
-  get '*path' => 'map#index'
-
   namespace :api do
     namespace :v1 do
       resources :maps, only: [:index] do
@@ -9,5 +6,8 @@ Rails.application.routes.draw do
       end
     end
   end
+  
+  root 'map#index'
+  get '*path' => 'map#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 end

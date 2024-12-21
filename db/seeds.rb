@@ -6,11 +6,11 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-map_coordinates = {
-  beach: [],
-  race: [],
-  fruit: [],
-  space: []
+waldo_coordinates = {
+  beach: {x: 0.6167778836987607, y: 0.37444279346210996},
+  race: {x: 0.27931363203050524, y: 0.3313253012048193},
+  fruit: {x: 0.892278360343184, y: 0.665680473372781},
+  space: {x: 0.4051477597712107, y: 0.6230101302460203}
 }
 
 ['beach', 'race', 'fruit', 'space'].each do |map|
@@ -18,5 +18,5 @@ map_coordinates = {
 end
 
 Map.all.each do |map|
-  map.character.create()
+  map.characters.create(name: 'waldo', coordinates: waldo_coordinates[map.title.to_sym].to_json)
 end

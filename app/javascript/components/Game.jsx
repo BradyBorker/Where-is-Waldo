@@ -27,16 +27,21 @@ const Game = () => {
         const normX = x / e.target.width;
         const normY = y / e.target.height;
         setCoordinates({ x, y, normX, normY })
-        console.log(`x: ${x} y: ${y}`)
+        console.log(`normX: ${normX} normY: ${normY}`)
     }
 
     const submitCoordinates = () => {
-        const normCoordinates = [coordinates.normX, coordinates.normY];
+        const normCoordinates = JSON.stringify({ x: coordinates.normX, y: coordinates.normY });
 
-        useEffect(() => {
-            const url = `/api/v1/maps/${mapTitle}/characters/waldo`;
-        }, [])
+        const url = `/api/v1/maps/${mapTitle}/characters/waldo?coordinates=${normCoordinates}`;
+        fetch(url)
+            .then((res) => res.json())
+            .then((res) => console.log(res))
     }
+
+    useEffect(() => {
+        submitCoordinates();
+    }, [])
 
     return (
         <>

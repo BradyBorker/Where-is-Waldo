@@ -20,6 +20,8 @@ const Game = () => {
 
     const endGame = () => {
         setPlaying((playState) => !playState);
+        console.log(elapsedTime)
+        setCoordinates({})
     }
 
     const clickMap = (e) => {
@@ -57,7 +59,7 @@ const Game = () => {
                     <Timer elapsedTime={elapsedTime} setElapsedTime={setElapsedTime} />
                     : <button onClick={startGame}>Start</button>}
                 </div>
-                <Map src={mapObj.src} title={mapObj.title} blurred={!playing} />
+                <Map src={mapObj.src} title={mapObj.title} blurred={!playing} setCoordinates={setCoordinates} />
             </div>
         </>
     )

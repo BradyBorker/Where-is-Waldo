@@ -18,6 +18,10 @@ const Game = () => {
         setPlaying((playState) => !playState);
     }
 
+    const endGame = () => {
+        setPlaying((playState) => !playState);
+    }
+
     const clickMap = (e) => {
         if (e.target.className !== "active-map") return;
 
@@ -27,16 +31,17 @@ const Game = () => {
         const normX = x / e.target.width;
         const normY = y / e.target.height;
         setCoordinates({ x, y, normX, normY })
-        console.log(`normX: ${normX} normY: ${normY}`)
     }
 
-    const submitCoordinates = () => {
+    const submitCoordinates = (character = 'waldo') => {
         const normCoordinates = JSON.stringify({ x: coordinates.normX, y: coordinates.normY });
 
-        const url = `/api/v1/maps/${mapTitle}/characters/waldo?coordinates=${normCoordinates}`;
+        const url = `/api/v1/maps/${mapTitle}/characters/${character}?coordinates=${normCoordinates}`;
         fetch(url)
             .then((res) => res.json())
-            .then((res) => console.log(res))
+            .then((res) => {
+                if (res) endGame();
+            })
     }
 
     useEffect(() => {
@@ -47,7 +52,7 @@ const Game = () => {
         <>
             <Header />
             <div className="game-map-container" onClick={playing ? clickMap : undefined}>
-                {Object.keys(coordinates).length > 0 && <Marker coordinates={[coordinates.x, coordinates.y]} submitCoordinates={submitCoordinates} />}
+                {playing && Object.keys(coordinates).length > 0 && <Marker coordinates={[coordinates.x, coordinates.y]} submitCoordinates={submitCoordinates} />}
                 <div className="start-timer">{playing ?
                     <Timer elapsedTime={elapsedTime} setElapsedTime={setElapsedTime} />
                     : <button onClick={startGame}>Start</button>}

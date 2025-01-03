@@ -8,7 +8,7 @@ const Marker = ({ coordinates, submitCoordinates }) => {
             <div style={{ left: `${x - 6}px`, top: `${y - 6}px` }} className="selection-container">
                 <div className="marker"></div>
                 <div className="character-select">
-                    <img src="/images/waldo.png" alt="waldo" onClick={submitCoordinates} />
+                    <img src="/images/waldo.png" alt="waldo" onClick={() => submitCoordinates('waldo')} />
                 </div>
             </div>
         </>

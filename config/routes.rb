@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :maps, only: [:index] do
         resources :characters, only: [:show]
-        resources :scores, only: [:show]
+        resources :scores, only: [:index, :create]
       end
     end
   end

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Map from "./Map";
 import Header from "./Header";
 import Timer from "./Timer";
@@ -10,6 +10,7 @@ const Game = () => {
     const [playing, setPlaying] = useState(false);
     const [elapsedTime, setElapsedTime] = useState(0);
     const [coordinates, setCoordinates] = useState({});
+    const navigate = useNavigate();
 
     const mapTitle = useParams().map;
     const mapObj = maps.find((map) => map.title == mapTitle);
@@ -20,8 +21,8 @@ const Game = () => {
 
     const endGame = () => {
         setPlaying((playState) => !playState);
-        console.log(elapsedTime)
         setCoordinates({})
+        navigate(`/${mapTitle}/scores`, { state: { elapsedTime, mapTitle } });
     }
 
     const clickMap = (e) => {

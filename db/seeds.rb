@@ -20,3 +20,7 @@ end
 Map.all.each do |map|
   map.characters.create(name: 'waldo', coordinates: waldo_coordinates[map.title.to_sym].to_json)
 end
+
+raceMap = Map.find(2)
+raceMap.scores.create(name: 'test1', time: 2.0)
+raceMap.scores.create(name: 'test2', time: 4.7)

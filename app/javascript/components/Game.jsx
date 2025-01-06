@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Map from "./Map";
 import Header from "./Header";
 import Timer from "./Timer";
 import Marker from "./Marker";
+import Scores from "./Scores";
 import { maps } from "./App";
 
 const Game = () => {
     const [playing, setPlaying] = useState(false);
+    const [showScores, setShowScores] = useState(false);
     const [elapsedTime, setElapsedTime] = useState(0);
     const [coordinates, setCoordinates] = useState({});
-    const navigate = useNavigate();
 
     const mapTitle = useParams().map;
     const mapObj = maps.find((map) => map.title == mapTitle);
@@ -21,8 +22,8 @@ const Game = () => {
 
     const endGame = () => {
         setPlaying((playState) => !playState);
+        setShowScores((showing) => !showing)
         setCoordinates({})
-        navigate(`/${mapTitle}/scores`, { state: { elapsedTime, mapTitle } });
     }
 
     const clickMap = (e) => {
@@ -38,8 +39,8 @@ const Game = () => {
 
     const submitCoordinates = (character = 'waldo') => {
         const normCoordinates = JSON.stringify({ x: coordinates.normX, y: coordinates.normY });
-
         const url = `/api/v1/maps/${mapTitle}/characters/${character}?coordinates=${normCoordinates}`;
+
         fetch(url)
             .then((res) => res.json())
             .then((res) => {
@@ -54,14 +55,18 @@ const Game = () => {
     return (
         <>
             <Header />
-            <div className="game-map-container" onClick={playing ? clickMap : undefined}>
-                {playing && Object.keys(coordinates).length > 0 && <Marker coordinates={[coordinates.x, coordinates.y]} submitCoordinates={submitCoordinates} />}
-                <div className="start-timer">{playing ?
-                    <Timer elapsedTime={elapsedTime} setElapsedTime={setElapsedTime} />
-                    : <button onClick={startGame}>Start</button>}
+            {(showScores && !playing) ?
+                <Scores mapTitle={mapTitle} elapsedTime={elapsedTime} />
+                :
+                <div className="game-map-container" onClick={playing ? clickMap : undefined}>
+                    {playing && Object.keys(coordinates).length > 0 && <Marker coordinates={[coordinates.x, coordinates.y]} submitCoordinates={submitCoordinates} />}
+                    <div className="start-timer">{playing ?
+                        <Timer elapsedTime={elapsedTime} setElapsedTime={setElapsedTime} />
+                        : <button onClick={startGame}>Start</button>}
+                    </div>
+                    <Map src={mapObj.src} title={mapObj.title} blurred={!playing} setCoordinates={setCoordinates} />
                 </div>
-                <Map src={mapObj.src} title={mapObj.title} blurred={!playing} setCoordinates={setCoordinates} />
-            </div>
+            }
         </>
     )
 }

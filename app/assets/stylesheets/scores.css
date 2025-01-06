@@ -1,0 +1,62 @@
+.scores-container {
+    border: 1px solid black;
+    width: 350px;
+    min-height: 500px;
+    margin: 15px auto 0px auto;
+
+    display: grid;
+    grid-template-rows: 1fr 4fr;
+}
+
+.submit-score {
+    border: 1px solid red;
+}
+
+.submit-score>form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.submit-score>form>button {
+    padding: 5px;
+}
+
+.player-time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.player-time>p {
+    font-size: 18px;
+}
+
+.map-scores-container {
+    border: 1px solid green;
+}
+
+.map-scores-container>h1 {
+    text-align: center;
+}
+
+.scores {
+    margin-top: 10px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.scores>table {
+    border-collapse: collapse;
+    font-size: 18px;
+}
+
+.scores>table th,
+.scores>table td {
+    padding: 6px 12px;
+}

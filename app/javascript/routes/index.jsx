@@ -9,7 +9,6 @@ export default (
         <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/game/:map' element={<Game />} />
-            <Route path='/:map/scores' element={<Scores />} />
         </Routes>
     </Router>
 );

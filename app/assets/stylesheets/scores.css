@@ -1,7 +1,7 @@
 .scores-container {
     border: 1px solid black;
     width: 350px;
-    min-height: 500px;
+    height: max-content;
     margin: 15px auto 0px auto;
 
     display: grid;
@@ -9,7 +9,11 @@
 }
 
 .submit-score {
-    border: 1px solid red;
+    border: 3px solid var(--red-color);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .submit-score>form {
@@ -22,8 +26,17 @@
     padding: 5px;
 }
 
+.submit-score>form input {
+    background-color: lightblue;
+    border-radius: 3px;
+}
+
 .submit-score>form>button {
+    font-weight: bold;
     padding: 5px;
+    border-radius: 3px;
+    color: var(--red-color);
+    background-color: lightblue;
 }
 
 .player-time {
@@ -37,7 +50,7 @@
 }
 
 .map-scores-container {
-    border: 1px solid green;
+    border: 3px solid var(--blue-color);
 }
 
 .map-scores-container>h1 {
@@ -58,5 +71,6 @@
 
 .scores>table th,
 .scores>table td {
-    padding: 6px 12px;
+    padding: 3px 12px;
+    margin: 0;
 }

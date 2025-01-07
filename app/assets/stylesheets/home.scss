@@ -25,11 +25,11 @@
 }
 
 .header .text>span.first {
-    color: #085B98
+    color: var(--blue-color)
 }
 
 .header .text>span.second {
-    color: #860906
+    color: var(--red-color)
 }
 
 .maps-container {

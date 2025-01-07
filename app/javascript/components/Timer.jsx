@@ -15,7 +15,7 @@ const Timer = ({ elapsedTime, setElapsedTime }) => {
 
     return (
         <>
-            {elapsedTime.toFixed(2)}
+            <div className="time">{elapsedTime.toFixed(2)}</div>
         </>
     )
 }
